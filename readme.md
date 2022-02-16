@@ -31,8 +31,8 @@ Once you have run the project using **gradlew bootRun**, then you can just copy 
 and then you can watch **sink folder** on its respective partitions getting populated.
 
 ## Assumptions
-- source folder will data will come from external vendor/tool which will feed json profiles to source folder
-- json profiles is expected the have the minimum set of fields declared in the agreed business doc.
+- source folder data will come from external vendor/tool which will feed json profiles to source folder
+- json profiles is expected to have the minimum set of fields declared in the agreed business doc.
 - height will be in Foot and weight will be in kilograms
 - both source and sink folder is expected to be accesable on the current machine the integration is running on. 
 - file formats of source json files will be in {userId}.json, otherwise it will not be processsed. 
@@ -44,7 +44,7 @@ if theres any errors occured the original file will be retried and will not be m
 - running the current design is not production friendly
 - We cant scale the design because doing so will cause IO Errors
 - even if we can, IO is always slow specially if you are not using ssd 
-- depending on the volume of data then running the integration for the first time against an already populated source folder might exlode specially if you attempt to read them simultainously 
+- depending on the volume of data then running the integration for the first time(or if you run the integration using external scheduler) against an already populated source folder might exlode specially if you attempt to read them simultainously 
 
 ## Support
 If theres any need, reach out to ortizmark905@gmail.com or create an issue to this repo.
