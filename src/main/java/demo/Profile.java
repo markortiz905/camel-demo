@@ -3,6 +3,9 @@ package demo;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * @author mortiz
+ */
 @Getter
 @Setter
 public class Profile {

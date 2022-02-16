@@ -3,7 +3,6 @@ package demo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.camel.CamelContext;
-import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.ThreadPoolBuilder;
@@ -14,6 +13,9 @@ import org.springframework.context.annotation.Bean;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ExecutorService;
 
+/**
+ * @author mortiz
+ */
 @Slf4j
 @SpringBootApplication
 public class SimpleDemo {
