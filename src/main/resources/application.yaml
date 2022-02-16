@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: bss-sf-sftp-satori
+  main:
+    banner-mode: off
+    web-application-type: none
+server:
+  shutdown: graceful
+
+camel:
+  springboot:
+    name: bss-sf-to-gcs
+    main-run-controller: true
+
+source_folder: ${SOURCE_FOLDER:source}
+sink_folder: ${SINK_FOLDER:sink}

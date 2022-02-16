@@ -1,0 +1,62 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'idea'
+}
+
+group = 'com.scentre.integration'
+version = '1.0'
+sourceCompatibility = '1.8'
+
+bootRun {
+    // support passing -Dsystem.property=value to bootRun task
+    systemProperties.putAll System.properties
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    camelVersion = '2.25.2'
+}
+
+ext['log4j2.version'] = '2.15.0'
+
+dependencies {
+    // Camel and SpringBoot
+    compile ("org.apache.camel:camel-spring-boot-starter:${camelVersion}")
+
+    compile("org.apache.camel:camel-jackson:${camelVersion}")
+
+    // Logging
+    compile('net.logstash.logback:logstash-logback-encoder:4.8') {
+        // https://github.com/logstash/logstash-logback-encoder/issues/160
+        // Until the fix makes into logback encoder
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+        exclude group: 'ch.qos.logback', module: 'logback-core'
+    }
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.8'
+    compile group: 'ch.qos.logback', name: 'logback-core', version: '1.1.8'
+
+    compile "javax.xml.bind:jaxb-api:2.3.0"
+    compile "com.sun.xml.bind:jaxb-core:2.3.0"
+    compile "com.sun.xml.bind:jaxb-impl:2.3.0"
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+test {
+    useJUnitPlatform()
+}
+
